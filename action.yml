@@ -12,6 +12,22 @@ inputs:
     description: the file name in the project that will be replace by your file
     required: true
     default: "extension.js"
+  token:
+    description: your ccw token
+    required: true
+    default: "foo"
 runs:
-  using: "node20"
-  main: src/index.js
+  using: "composite"
+  steps:
+    - name: install
+      run: npm ci
+      shell: bash
+    - name: deploy
+      run: node src/index.js
+      shell: bash
+      env:
+        PROJECT_ID: ${{inputs.projectId}}
+        CCW_TOKEN: ${{inputs.token}}
+        SRC: ${{inputs.srcFile}}
+        DST: ${{inputs.dstFile}}
+
