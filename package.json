@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "deploy your file to ccw",
   "license": "ISC",
-  "author": "",
-  "type": "module",
+  "author": "bpdxz",
+  "type": "commonjs",
   "main": "src/index.js",
   "dependencies": {
     "@actions/core",
