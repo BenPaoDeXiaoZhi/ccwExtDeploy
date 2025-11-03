@@ -2,7 +2,7 @@ name: CCW Deploy
 description: Upload your file to a certain ccw project
 inputs: 
   projectId:
-    description: "your project\'s id"
+    description: "your project's id"
     required: true
   srcFile: 
     description: your file that will be deployed to ccw
