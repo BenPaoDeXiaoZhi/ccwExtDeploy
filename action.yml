@@ -24,7 +24,9 @@ runs:
   using: "composite"
   steps:
     - name: install
-      run: npm ci
+      run: |
+        npm ci
+        npx playwright install --with-deps chromium
       shell: bash
     - name: deploy
       run: |
