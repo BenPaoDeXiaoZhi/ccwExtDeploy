@@ -7,7 +7,7 @@
   "type": "commonjs",
   "main": "src/index.js",
   "dependencies": {
-    "@actions/core",
-    "@actions/github"
+    "@actions/core":"latest",
+    "@actions/github":"latest"
   }
 }
