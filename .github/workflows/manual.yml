@@ -27,3 +27,4 @@ jobs:
       uses: ./
       with:
         projectId: ${{inputs.id}}
+        srcFile: src/index.js
