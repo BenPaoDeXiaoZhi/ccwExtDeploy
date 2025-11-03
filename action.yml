@@ -12,7 +12,7 @@ inputs:
     description: the file name in the project that will be replace by your file
     required: true
     default: "extension.js"
-jobs:
+runs:
   deploy:
     runs-on: ubuntu-latest
     steps: 
