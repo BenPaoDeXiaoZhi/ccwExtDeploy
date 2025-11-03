@@ -23,7 +23,9 @@ runs:
       run: npm ci
       shell: bash
     - name: deploy
-      run: node src/index.js
+      run: |
+        ls
+        node src/index.js
       shell: bash
       env:
         PROJECT_ID: ${{inputs.projectId}}
