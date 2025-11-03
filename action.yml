@@ -36,4 +36,5 @@ runs:
         CCW_TOKEN: ${{inputs.token}}
         SRC: ${{inputs.srcFile}}
         DST: ${{inputs.dstFile}}
+        BANNER: ${{inputs.banner}}
 
