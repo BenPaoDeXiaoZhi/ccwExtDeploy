@@ -12,3 +12,6 @@ inputs:
     description: the file name in the project that will be replace by your file
     required: true
     default: "extension.js"
+runs:
+  using: node20
+  main: src/index.js
