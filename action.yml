@@ -13,15 +13,5 @@ inputs:
     required: true
     default: "extension.js"
 runs:
-  using: "composite"
-  steps: 
-    - name: install deps
-      run: |
-          npm ci
-          echo ${{inputs.projectId}}
-      shell: bash
-    - name: deploy
-      run: |
-          node src/index.js
-      shell: bash
-      
+  using: "node20"
+  main: src/index.js
