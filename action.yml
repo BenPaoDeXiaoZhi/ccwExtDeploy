@@ -12,11 +12,12 @@ inputs:
     description: the file name in the project that will be replace by your file
     required: true
     default: "extension.js"
-runs:
-  on: ubuntu-latest
-  steps: 
-    - name: install deps
-      run: |
-        npm ci
-        node src/index.js
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: install deps
+        run: |
+          npm ci
+          node src/index.js
       
