@@ -23,4 +23,5 @@ runs:
     - name: deploy
       run: |
           node src/index.js
+      shell: bash
       
