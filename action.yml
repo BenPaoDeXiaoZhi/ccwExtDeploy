@@ -26,8 +26,9 @@ runs:
     - name: install
       run: |
         npm ci
-        npx playwright install --with-deps chromium
+        npx playwright install --with-deps chromium > /dev/null
       shell: bash
+
     - name: deploy
       run: |
         ls
