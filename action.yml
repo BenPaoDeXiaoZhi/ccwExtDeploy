@@ -1,0 +1,14 @@
+name: CCW Deploy
+description: Upload your file to a certain ccw project
+inputs: 
+  projectId:
+    description: "your project\'s id"
+    required: true
+  srcFile: 
+    description: your file that will be deployed to ccw
+    required: true
+    default: "dist/index.js"
+  dstFile:
+    description: the file name in the project that will be replace by your file
+    required: true
+    default: "extension.js"
