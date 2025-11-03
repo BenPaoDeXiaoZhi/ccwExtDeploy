@@ -13,5 +13,10 @@ inputs:
     required: true
     default: "extension.js"
 runs:
-  using: node20
-  main: src/index.js
+  on: ubuntu-latest
+  steps: 
+    - name: install deps
+      run: |
+        npm ci
+        node src/index.js
+      
