@@ -1,0 +1,13 @@
+{
+  "name": "ccwExtDeploy",
+  "version": "1.0.0",
+  "description": "deploy your file to ccw",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "src/index.js",
+  "dependencies": {
+    "@actions/core",
+    "@actions/github"
+  }
+}
