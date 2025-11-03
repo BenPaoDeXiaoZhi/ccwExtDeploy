@@ -16,6 +16,10 @@ inputs:
     description: your ccw token
     required: true
     default: "foo"
+  banner:
+    description: the banner which will be injected to the top of the file
+    default: |
+      /* deployed by github action */
 runs:
   using: "composite"
   steps:
