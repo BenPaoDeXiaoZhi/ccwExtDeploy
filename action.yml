@@ -13,11 +13,11 @@ inputs:
     required: true
     default: "extension.js"
 runs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps: 
-      - name: install deps
-        run: |
+  using: "composite"
+  steps: 
+    - name: install deps
+      run: |
           npm ci
           node src/index.js
+      shell: bash
       
