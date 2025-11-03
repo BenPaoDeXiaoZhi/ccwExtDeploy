@@ -18,6 +18,9 @@ runs:
     - name: install deps
       run: |
           npm ci
-          node src/index.js
+          echo ${{inputs.projectId}}
       shell: bash
+    - name: deploy
+      run: |
+          node src/index.js
       
