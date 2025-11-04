@@ -30,7 +30,7 @@ function getExit(browser,ctx,page){
 function trapVM(ontrap="ontrap",every=false){
   if(vm){
     if(every){
-      (window.[ontrap])(vm);
+      (window[ontrap])(vm);
     }
     return
   }
@@ -42,7 +42,7 @@ function trapVM(ontrap="ontrap",every=false){
       let vm = self2
       log("vm trapped")
       window.vm=vm
-      (window.[ontrap])(vm);
+      (window[ontrap])(vm);
       pro.bind=orig
     }
     return orig.call(this,self2,...args)
