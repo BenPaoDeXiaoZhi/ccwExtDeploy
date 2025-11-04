@@ -19,6 +19,8 @@ try {
 
 function getExit(browser,ctx,page){
   return async function(code=0,msg="exited successfully!"){
+    const buffer = await page.screenshot()
+    console.log(buffer.toString("base64"))
     await page.close();
     await ctx.close();
     await browser.close();
@@ -85,6 +87,4 @@ async function start(pid,dat,dst,token,uid){
   await ctx.addInitScript(trapVM,{dat,dst})
   page.on('console', msg => console.log(msg.text()));
   await page.goto("https://www.ccw.site/gandi/extension/"+pid)
-  const buffer = await page.screenshot()
-  console.log(buffer.toString("base64"))
 }
