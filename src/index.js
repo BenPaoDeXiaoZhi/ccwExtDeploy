@@ -86,5 +86,5 @@ async function start(pid,dat,dst,token,uid){
   })
   await ctx.addInitScript(trapVM,{dat,dst})
   page.on('console', msg => console.log(msg.text()));
-  await page.goto("https://www.ccw.site/gandi/extension/"+pid)
+  page.goto("https://www.ccw.site/gandi/extension/"+pid) // no await 否则提前退出会报错
 }
