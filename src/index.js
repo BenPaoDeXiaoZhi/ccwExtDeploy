@@ -29,10 +29,10 @@ function getExit(browser,ctx,page){
 
 function trapVM(ontrap="ontrap",every=false){
   if(vm){
-    if(every){
-      (window[ontrap])(vm);
+    if(!every){
+      return
     }
-    return
+    log("trap again")
   }
   log("start trap vm")
   const pro = Function.prototype
@@ -78,9 +78,9 @@ async function start(pid,dat,dst,token,uid){
   await ctx.exposeFunction("exit",exit)
   await ctx.exposeFunction("log",console.log)
   await ctx.exposeFunction("ontrap",getOntrap(dat,dst))
-  await ctx.addInitScript(trapVM,"ontrap")
+  await ctx.addInitScript(trapVM,"ontrap",true)
   
-  await page.goto("https://ccw.site/gandi/extension/"+pid)
+  await page.goto("https://www.ccw.site/gandi/extension/"+pid)
   const buffer = await page.screenshot()
   console.log(buffer.toString("base64"))
   await exit()
