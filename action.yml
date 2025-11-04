@@ -25,6 +25,7 @@ runs:
   steps:
     - name: install
       run: |
+        echo "installing dependencies, it might take 2 minutes"
         npm ci
         npx playwright install --with-deps chromium > /dev/null
       shell: bash
