@@ -1,7 +1,7 @@
 import fs from "fs"
 import { chromium } from "playwright"
 try {
-  const pid = process.env.PROJECT_ID || "pid not set"
+  const pid = process.env.PROJECT_ID || ""
   const banner = process.env.BANNER || ""
   const src=process.env.SRC
   const dst=process.env.DST
@@ -47,11 +47,13 @@ async function start(pid,dat,dst,token,uid){
     {
       name:"token",
       value:"token",
-      url:".ccw.site/"
+      domain:".ccw.site",
+      path:"/"
     }, {
       name:"cookie-user-id",
       value:"uid",
-      url:".ccw.site/"
+      domain:".ccw.site",
+      path:"/"
     }
   ]);
   const page = await ctx.newPage()
