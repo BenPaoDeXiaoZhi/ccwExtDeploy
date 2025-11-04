@@ -28,11 +28,14 @@ function getExit(browser,ctx,page){
 }
 
 function trapVM(onTrap){
+  console.log("start trap vm")
   const pro = Function.prototype
   const orig = pro.bind
   pro.bind = function(self2,...args){
     if(self2?.runtime && self2?.on){
-      let vm = window.vm = self2
+      let vm = self2
+      console.log("vm trapped")
+      window.vm=vm
       onTrap(vm)
       pro.bind=orig
     }
