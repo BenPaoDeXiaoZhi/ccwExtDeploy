@@ -40,9 +40,9 @@ function trapVM(ontrap="ontrap",every=false){
   pro.bind = function(self2,...args){
     if(self2?.runtime && self2?.on){
       let vm = self2
+      (window[ontrap])(vm);
       log("vm trapped")
       window.vm=vm
-      (window[ontrap])(vm);
       pro.bind=orig
     }
     return orig.call(this,self2,...args)
