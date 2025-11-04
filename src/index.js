@@ -27,13 +27,13 @@ function getExit(browser,ctx,page){
   }
 }
 
-function trapVM(onLoaded){
+function trapVM(onTrap){
   const pro = Function.prototype
   const orig = pro.bind
   pro.bind = function(self2,...args){
     if(self2?.runtime && self2?.on){
       let vm = window.vm = self2
-      vm.on("PRJECT_LOADED",()=>onLoaded(vm))
+      onTrap(vm)
       pro.bind=orig
     }
     return orig.call(this,self2,...args)
@@ -61,5 +61,7 @@ async function start(pid,dat,dst,token,uid){
   await ctx.exposeFunction("exit",exit)
   ctx.addInitScript(trapVM,(vm)=>console.log(vm))
   await page.goto("https://ccw.site/gandi/extension/"+pid)
+  const buffer = page.screenshot()
+  console.log(buffer.toString("base64"))
   await exit()
 }
