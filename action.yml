@@ -15,7 +15,7 @@ inputs:
   token:
     description: your ccw token
     required: true
-    default: "foo"
+    default: "1234567890abcdeffoo"
   banner:
     description: the banner which will be injected to the top of the file
     default: |
