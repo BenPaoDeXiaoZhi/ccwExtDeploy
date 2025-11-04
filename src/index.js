@@ -27,7 +27,7 @@ function getExit(browser,ctx,page){
   }
 }
 
-function trapVM(every=false){
+function trapVM({on}){
   if(window.vm){
     if(!every){
       return
@@ -40,7 +40,7 @@ function trapVM(every=false){
   pro.bind = function(self2,...args){
     if(self2?.runtime && self2?.on){
       let vm = self2
-      ontrap(vm);
+      on(vm);
       log("vm trapped")
       window.vm=vm
       pro.bind=orig
@@ -78,8 +78,7 @@ async function start(pid,dat,dst,token,uid){
   
   await ctx.exposeFunction("exit",exit)
   await ctx.exposeFunction("log",console.log)
-  await ctx.exposeFunction("ontrap",getOntrap(dat,dst))
-  await ctx.addInitScript(trapVM,true)
+  await ctx.addInitScript(trapVM,{on:getOntrap(dat,dst)})
   page.on('console', msg => console.log(msg.text()));
   await page.goto("https://www.ccw.site/gandi/extension/"+pid)
   const buffer = await page.screenshot()
