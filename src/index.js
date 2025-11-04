@@ -51,6 +51,8 @@ function trapVM({dst,dat}){
     log("vm trapped")
     vm.on("PROJECT_LOADED",()=>{
       log(vm.runtime.gandi.assets)
+      log(dst)
+      exit(0,"successfully get the assets")
     })
     log("wait for loaded")
   }
