@@ -40,8 +40,7 @@ function trapVM({dst,dat}){
   pro.bind = function(self2,...args){
     if(self2?.runtime && self2?.on){
       let vm = self2
-      ontrap(vm);
-      log("vm trapped")
+      ontrap(vm,dst,dat);
       window.vm=vm
       pro.bind=orig
     }
@@ -49,9 +48,11 @@ function trapVM({dst,dat}){
   }
   
   function ontrap(vm,dst,dat){
+    log("vm trapped")
     vm.on("PROJECT_LOADED",()=>{
       log(vm.runtime.gandi.assets)
     })
+    log("wait for loaded")
   }
 }
 
@@ -76,10 +77,12 @@ async function start(pid,dat,dst,token,uid){
   
   await ctx.exposeFunction("exit",exit)
   await ctx.exposeFunction("log",console.log)
+  await ctx.addInitScript(()=>{
+    setTimeout(async()=>{await exit(-1,"timeout!")},20000);
+  })
   await ctx.addInitScript(trapVM,{dat,dst})
   page.on('console', msg => console.log(msg.text()));
   await page.goto("https://www.ccw.site/gandi/extension/"+pid)
   const buffer = await page.screenshot()
   console.log(buffer.toString("base64"))
-  await exit()
 }
