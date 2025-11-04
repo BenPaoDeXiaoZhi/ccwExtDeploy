@@ -28,7 +28,7 @@ function getExit(browser,ctx,page){
 }
 
 function trapVM(ontrap="ontrap",every=false){
-  if(vm){
+  if(window.vm){
     if(!every){
       return
     }
@@ -79,7 +79,7 @@ async function start(pid,dat,dst,token,uid){
   await ctx.exposeFunction("log",console.log)
   await ctx.exposeFunction("ontrap",getOntrap(dat,dst))
   await ctx.addInitScript(trapVM,"ontrap",true)
-  
+  page.on('console', msg => console.log(msg.text()));
   await page.goto("https://www.ccw.site/gandi/extension/"+pid)
   const buffer = await page.screenshot()
   console.log(buffer.toString("base64"))
