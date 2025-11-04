@@ -27,7 +27,13 @@ function getExit(browser,ctx,page){
   }
 }
 
-function trapVM(onTrap){
+function trapVM(onTrap,every=false){
+  if(vm){
+    if(every){
+      ontrap(vm);
+    }
+    return
+  }
   log("start trap vm")
   const pro = Function.prototype
   const orig = pro.bind
