@@ -59,7 +59,7 @@ async function start(pid,dat,dst,token,uid){
   const page = await ctx.newPage()
   const exit = getExit(browser,ctx,page)
   await ctx.exposeFunction("exit",exit)
-  ctx.addInitialScript(trapVM,(vm)=>console.log(vm))
+  ctx.addInitScript(trapVM,(vm)=>console.log(vm))
   await page.goto("https://ccw.site/gandi/extension/"+pid)
   await exit()
 }
