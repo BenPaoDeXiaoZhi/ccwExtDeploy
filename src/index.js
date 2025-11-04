@@ -28,13 +28,13 @@ function getExit(browser,ctx,page){
 }
 
 function trapVM(onTrap){
-  console.log("start trap vm")
+  log("start trap vm")
   const pro = Function.prototype
   const orig = pro.bind
   pro.bind = function(self2,...args){
     if(self2?.runtime && self2?.on){
       let vm = self2
-      console.log("vm trapped")
+      log("vm trapped")
       window.vm=vm
       onTrap(vm)
       pro.bind=orig
@@ -60,6 +60,7 @@ async function start(pid,dat,dst,token,uid){
     }
   ]);
   await ctx.exposeFunction("exit",exit)
+  await ctx.exposeFunction("log",console.log)
   await ctx.addInitScript(trapVM,(vm)=>console.log(vm))
   const page = await ctx.newPage()
   const exit = getExit(browser,ctx,page)
