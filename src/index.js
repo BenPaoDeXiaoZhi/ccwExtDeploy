@@ -5,7 +5,7 @@ try {
   const banner = process.env.BANNER || ""
   const src=process.env.SRC
   const dst=process.env.DST
-  const token=process.env.TOKEN
+  const token=process.env.CCW_TOKEN
   const uid=token.slice(16)
   console.log(`using file: ${dst} in project ${pid}`)
   console.log(`src: ${src}`)
