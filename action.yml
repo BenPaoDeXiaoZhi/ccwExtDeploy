@@ -37,8 +37,9 @@ runs:
 
     - name: deploy to ccw
       run: |
+        cd ..
         ls
-        node src/index.js
+        node ccwExtDeploy/src/index.js
       shell: bash
       env:
         PROJECT_ID: ${{inputs.projectId}}
@@ -49,7 +50,6 @@ runs:
 
     - name: remove temp files
       run: |
-        cd ..
         ls
         rm -rf ccwExtDeploy
 
