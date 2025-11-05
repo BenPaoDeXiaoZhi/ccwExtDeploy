@@ -39,7 +39,8 @@ runs:
 
     - name: deploy to ccw
       run: |
-        ls -R
+        cd ccwExtDeploy
+        ls
         node src/index.js
       shell: bash
       env:
@@ -52,8 +53,7 @@ runs:
     - name: remove temp files
       run: |
         echo "removing temp files..."
-        cd ..
-        ls -R
+        ls
         rm -rf ccwExtDeploy
       shell: bash
 
