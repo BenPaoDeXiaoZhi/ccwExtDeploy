@@ -12,7 +12,7 @@ try {
   console.log(`inject banner:${banner}`)
   console.log(`uid: ${uid}`)
   let dat=fs.readFileSync(src)
-  await start(pid,dat,dst,token,uid)
+  start(pid,dat,dst,token,uid)
 } catch (error) {
   throw error
 }
