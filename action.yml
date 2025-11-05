@@ -40,9 +40,7 @@ runs:
 
     - name: deploy to ccw
       run: |
-        cd ..
-        ls ccwExtDeploy
-        node ccwExtDeploy/src/index.js
+        node src/index.js
       shell: bash
       env:
         PROJECT_ID: ${{inputs.projectId}}
