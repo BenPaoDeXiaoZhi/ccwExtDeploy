@@ -53,7 +53,8 @@ runs:
     - name: remove temp files
       run: |
         echo "removing temp files..."
-        ls
         rm -rf ccwExtDeploy
+        echo "removed!"
+        ls
       shell: bash
 
