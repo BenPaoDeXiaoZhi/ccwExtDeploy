@@ -26,11 +26,12 @@ runs:
     - name: setup scripts
       run: |
         git clone --depth=1 https://github.com/BenPaoDeXiaoZhi/ccwExtDeploy
-        cd ccwExtDeploy
       shell: bash
 
     - name: install dependencies
       run: |
+        cd ccwExtDeploy
+        ls
         echo "installing dependencies, it might take 2 minutes"
         npm ci
         npx playwright install --with-deps chromium > /dev/null
