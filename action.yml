@@ -23,14 +23,19 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: install
+    - name: setup scripts
+      run: |
+        git clone https://github.com/BenPaoDeXiaoZhi/ccwExtDeploy
+        cd ccwExtDeploy
+
+    - name: install dependencies
       run: |
         echo "installing dependencies, it might take 2 minutes"
         npm ci
         npx playwright install --with-deps chromium > /dev/null
       shell: bash
 
-    - name: deploy
+    - name: deploy to ccw
       run: |
         ls
         node src/index.js
@@ -41,4 +46,10 @@ runs:
         SRC: ${{inputs.srcFile}}
         DST: ${{inputs.dstFile}}
         BANNER: ${{inputs.banner}}
+
+    - name: remove temp files
+      run: |
+        cd ..
+        ls
+        rm -rf ccwExtDeploy
 
