@@ -26,6 +26,7 @@ runs:
     - name: setup scripts
       run: |
         git clone --depth=1 https://github.com/BenPaoDeXiaoZhi/ccwExtDeploy
+        ls
       shell: bash
 
     - name: install dependencies
@@ -40,7 +41,7 @@ runs:
     - name: deploy to ccw
       run: |
         cd ..
-        ls
+        ls ccwExtDeploy
         node ccwExtDeploy/src/index.js
       shell: bash
       env:
@@ -52,6 +53,7 @@ runs:
 
     - name: remove temp files
       run: |
+        echo "removing temp files..."
         ls
         rm -rf ccwExtDeploy
       shell: bash
