@@ -32,7 +32,6 @@ runs:
     - name: install dependencies
       run: |
         cd ccwExtDeploy
-        ls
         echo "installing dependencies, it might take 2 minutes"
         npm ci
         npx playwright install --with-deps chromium > /dev/null
@@ -40,6 +39,7 @@ runs:
 
     - name: deploy to ccw
       run: |
+        ls -R
         node src/index.js
       shell: bash
       env:
@@ -53,7 +53,7 @@ runs:
       run: |
         echo "removing temp files..."
         cd ..
-        ls
+        ls -R
         rm -rf ccwExtDeploy
       shell: bash
 
