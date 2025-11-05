@@ -1,5 +1,6 @@
 import fs from "fs"
 import { chromium } from "playwright"
+import path from "path"
 try {
   const pid = process.env.PROJECT_ID || ""
   const banner = process.env.BANNER || ""
@@ -11,7 +12,7 @@ try {
   console.log(`src: ${src}`)
   console.log(`inject banner:${banner}`)
   console.log(`uid: ${uid}`)
-  let dat=fs.readFileSync(src)
+  let dat=fs.readFileSync(path.join("../",src))
   start(pid,dat,dst,token,uid)
 } catch (error) {
   throw error
